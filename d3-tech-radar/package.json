@@ -1,0 +1,28 @@
+{
+  "name": "@dnvgl/d3-tech-radar",
+  "version": "0.0.1",
+  "description": "Tech Radar D3 plugin",
+  "keywords": [
+    "d3",
+    "d3-module"
+  ],
+  "license": "MIT",
+  "main": "build/d3-tech-radar.js",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/dnvgl/tech-radar/d3-tech-radar",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dnvgl/tech-radar.git"
+  },
+  "scripts": {
+    "pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/d3-tech-radar.js -- index.js",
+    "test": "tape 'test/**/*-test.js'",
+    "prepublish": "npm run test && uglifyjs build/d3-tech-radar.js -c -m -o build/d3-tech-radar.min.js",
+    "postpublish": "zip -j build/d3-tech-radar.zip -- LICENSE README.md build/d3-tech-radar.js build/d3-tech-radar.min.js"
+  },
+  "devDependencies": {
+    "rollup": "0.27",
+    "tape": "4",
+    "uglify-js": ">=2.6.0"
+  }
+}

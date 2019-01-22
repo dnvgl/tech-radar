@@ -1,0 +1,11 @@
+[{
+    "projectName": "Tech Radar",
+    "technologies": ["jQuery", "javascript", "D3"],
+    "contact": {
+        "name": "John Doe",
+        "email": "john.doe@acme.com"
+    },
+    "comment": "This project is built with jQuery and D3.",
+    "lastUpdate": "2019-01-07",
+    "lastUpdateBy": "john.doe@acme.com"
+}]

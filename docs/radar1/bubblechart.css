@@ -1,0 +1,50 @@
+.bubblechart circle {
+    stroke-width: 0;
+}
+
+.bubblechart circle:hover {
+    opacity: 0.8;
+}
+
+.bubblechart text {
+    stroke-width: 0px;
+    font-size: 9px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.bubblechart.web_development circle {
+    fill: var(--category1);
+    stroke: var(--category1);
+}
+
+.bubblechart.data_science circle {
+    fill: var(--category2);
+    stroke: var(--category2);
+}
+
+.bubblechart.web_development text {
+    fill: white;
+}
+
+.bubblechart.data_science text {
+    fill: var(--category2);
+}
+
+.bubblechart text {
+    mix-blend-mode: difference;
+}
+
+.bubblechart.received circle {
+    stroke-width: 2px;
+    stroke-dasharray: 1;
+    fill: transparent;
+}
+
+.bubblechart.received text {
+    fill: black;
+}
+
+#bubblechart-tab.no-bubblechart-labels * .bubblechart text {
+    visibility: hidden;
+}

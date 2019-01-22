@@ -1,0 +1,171 @@
+:root {
+    --neutral40: #d3c5bc;
+    --neutral80: #a18573;
+    --category1: #0f204b;
+    --category2: #e98300;
+    --category3: #009fda;
+    --header-color: #0f204b;
+    --ring1: #BAE6B0;
+    --ring2: #DCF2D7;
+    --ring3: #E5E5E5;
+    --ring4: linear-gradient(45deg,
+        #F9F9F9,
+        #F9F9F9 10px,
+        #F2F2F2 10px,
+        #F2F2F2 20px);
+    --active-background: #0f204b;
+    --active-color: white;
+    --inactive-color: #666666;
+    --sector-label-color: var(--neutral40);
+    --ring-label-color: var(--neutral80);
+}
+
+/* RESULTS SECTION */
+
+#technology_results .info {
+    float: right;
+    font-size: 30px;
+    color: #337ab7;
+    padding-right: 12pt;
+}
+
+.fas.fa-info-circle {
+    font-size: 10pt;
+    color: #337ab7;
+    vertical-align: top;
+}
+
+.badge.numberOfPeople {
+    font-size:6pt;
+    vertical-align: middle;
+}
+
+#technology_list * a.Frontend {
+    color: var(--category1);
+}
+
+#technology_list * a.Backend {
+    color: var(--category2);
+}
+
+#technology_list * a.Data_Science {
+    color: var(--category3);
+}
+
+#technology_list * ul {
+    margin-bottom: 32pt;
+}
+
+#technology_list * li {
+    margin-bottom: 0 !important;
+}
+
+#technology_list * a {
+    border-bottom: none !important;
+}
+
+#technology_details .title {
+    border-bottom: solid 1px #ddd;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+
+/* FILTERING SECTION */
+.technology-filters {
+    margin-bottom: 32pt;
+}
+
+.filter-button {
+    /* background: var(--inactive-background); */
+    border: solid 1px var(--inactive-color);
+    color: var(--inactive-color);
+    width: calc(25% - 10pt);
+    max-width: 160pt;
+    margin: 2pt;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.filter-button.active {
+    background: #ccecf8;
+    color: #009fda;
+    border: solid 1px transparent;
+}
+
+.filter-button.Frontend.active {
+    background: var(--category1);
+    color: white;
+}
+
+.filter-button.Backend.active {
+    background: var(--category2);
+    color: white;
+}
+
+.filter-button.Data_Science.active {
+    background: var(--category3);
+    color: white;
+}
+
+.filter-button {
+    display: inline-block;
+    background: none;
+    margin: 4pt;
+    padding: 4pt;
+}
+
+.filter-button:hover,
+.filter-button.active:hover {
+    background: #99d9f0;
+    color: #009fda;
+}
+
+.filter-button::before {
+    content: "\f111";
+    font-family: "Font Awesome 5 Free";
+    padding-right: 8pt
+}
+
+.filter-button.active::before {
+    content: "\f058";
+}
+
+#technology_search {
+    width: calc(25% - 5pt);
+}
+
+/* DETAILS SECTION */
+
+.person {
+    padding: 4pt;
+}
+
+.person img {
+    display: inline-block;
+    margin-right: 10pt;
+    width: 72px;
+    height: 72px;
+    /* background: url(./avatar.png) no-repeat scroll 0 0; */
+}
+
+.person .details {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.person .name {
+    font-weight: bold;
+}
+
+.person .phone {
+    font-style: italic;
+}
+
+.project .name {
+    font-weight: bold;
+}
+
+.project .date {
+    float: right;
+}

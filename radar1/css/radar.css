@@ -1,0 +1,86 @@
+.rings circle {
+    stroke: none;
+}
+
+.rings circle.adopt {
+    fill: var(--ring1);
+}
+
+.rings circle.trial {
+    fill: var(--ring2);
+}
+
+.rings circle.assess {
+    fill: var(--ring3);
+}
+
+.rings circle.hold {
+    fill: url(#holdStripes);
+}
+
+.rings text {
+    text-transform: uppercase;
+    fill: var(--ring-label-color);
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+/* .rings text.hold{
+    fill: lightgray;
+} */
+
+.sectors line {
+    stroke: white;
+    stroke-width: 3px;
+}
+
+.sectors path {
+    stroke: none;
+    fill: none;
+}
+
+.sectors text {
+    text-transform: uppercase;
+    fill: var(--sector-label-color);
+    font-size: 12pt;
+    font-weight: bold;
+}
+
+.blip circle {
+    stroke-width: 0;
+}
+
+.blip circle:hover {
+    transform: scale(1.2)
+}
+
+.blip text {
+    stroke-width: 0px;
+    font-size: 9px;
+    text-anchor: middle;
+    /* alignment-baseline: baseline; */
+}
+
+.blip.received text {
+    /* fill-opacity: 0.5; */
+}
+
+.blip.web_development circle {
+    fill: var(--category1);
+    stroke: var(--category1);
+}
+
+.blip.data_science circle {
+    fill: var(--category3);
+    stroke: var(--category3);
+}
+
+.blip.received circle {
+    stroke-width: 2px;
+    stroke-dasharray: 1;
+    fill: transparent;
+}
+
+#radar-tab.no-blip-labels * .blip text {
+    visibility: hidden;
+}

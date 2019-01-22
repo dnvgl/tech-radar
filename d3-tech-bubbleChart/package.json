@@ -1,0 +1,28 @@
+{
+  "name": "@dnvgl/d3-tech-bubblechart",
+  "version": "0.0.1",
+  "description": "Tech Bubble Chart D3 plugin",
+  "keywords": [
+    "d3",
+    "d3-module"
+  ],
+  "license": "MIT",
+  "main": "build/d3-tech-bubblechart.js",
+  "jsnext:main": "index",
+  "homepage": "https://github.com/dnvgl/tech-radar/d3-tech-bubblechart",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dnvgl/tech-radar.git"
+  },
+  "scripts": {
+    "pretest": "rm -rf build && mkdir build && rollup -f umd -n d3 -o build/d3-tech-bubblechart.js -- index.js",
+    "test": "tape 'test/**/*-test.js'",
+    "prepublish": "npm run test && uglifyjs build/d3-tech-bubblechart.js -c -m -o build/d3-tech-bubblechart.min.js",
+    "postpublish": "zip -j build/d3-tech-bubblechart.zip -- LICENSE README.md build/d3-tech-bubblechart.js build/d3-tech-bubblechart.min.js"
+  },
+  "devDependencies": {
+    "rollup": "0.27",
+    "tape": "4",
+    "uglify-js": "2"
+  }
+}

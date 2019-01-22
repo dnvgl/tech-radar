@@ -1,0 +1,97 @@
+[{
+    "name": "jQuery",
+    "category": "Web development",
+    "area": "languages & frameworks",
+    "phase": "hold",
+    "status": "approved",
+    "tags": [],
+    "description": "",
+    "lastUpdate": "2019-01-09 14.54.34",
+    "lastUpdateBy": "john.doe@acme.com",
+    "reference": ""
+  },
+  {
+    "name": "Javascript",
+    "category": "Web development",
+    "area": "languages & frameworks",
+    "phase": "adopt",
+    "status": "approved",
+    "tags": [],
+    "description": "",
+    "lastUpdate": "2019-01-09 14.54.34",
+    "lastUpdateBy": "john.doe@acme.com",
+    "reference": ""
+  },
+  {
+    "name": "D3",
+    "category": "Web development",
+    "area": "languages & frameworks",
+    "phase": "trial",
+    "status": "approved",
+    "tags": [],
+    "description": "",
+    "lastUpdate": "2019-01-09 14.54.34",
+    "lastUpdateBy": "john.doe@acme.com",
+    "reference": ""
+  },
+  {
+    "name": "Azure",
+    "category": "Web development",
+    "area": "platforms",
+    "phase": "adopt",
+    "status": "approved",
+    "tags": [],
+    "description": "",
+    "lastUpdate": "2019-01-09 14.54.34",
+    "lastUpdateBy": "john.doe@acme.com",
+    "reference": ""
+  },
+  {
+    "name": "Python",
+    "category": "Web development",
+    "area": "languages & frameworks",
+    "phase": "assess",
+    "status": "approved",
+    "tags": [],
+    "description": "",
+    "lastUpdate": "2019-01-09 14.54.34",
+    "lastUpdateBy": "john.doe@acme.com",
+    "reference": ""
+  },
+  {
+    "name": "Python",
+    "category": "Data Science",
+    "area": "languages & frameworks",
+    "phase": "adopt",
+    "status": "approved",
+    "tags": [],
+    "description": "",
+    "lastUpdate": "2019-01-09 14.54.34",
+    "lastUpdateBy": "john.doe@acme.com",
+    "reference": ""
+  },
+  {
+    "name": "R",
+    "category": "Data Science",
+    "area": "languages & frameworks",
+    "phase": "adopt",
+    "status": "approved",
+    "tags": [],
+    "description": "",
+    "lastUpdate": "2019-01-09 14.54.34",
+    "lastUpdateBy": "john.doe@acme.com",
+    "reference": ""
+  },
+  {
+    "name": "Stencil.js",
+    "category": "Web development",
+    "area": "languages & frameworks",
+    "phase": "assess",
+    "status": "received",
+    "tags": [],
+    "description": "",
+    "lastUpdate": "2019-01-09 14.54.34",
+    "lastUpdateBy": "john.doe@acme.com",
+    "reference": ""
+  }
+]

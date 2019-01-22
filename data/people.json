@@ -1,0 +1,24 @@
+[{
+  "name": "Doe, John",
+  "mobile": "+47 99887766",
+  "contact": "john.doe@acme.com",
+  "me": "https://no.wikipedia.org/wiki/John_Doe",
+  "picture": "",
+  "technologies": [
+    "D3",
+    "javascript",
+    "R"
+  ]
+},
+{
+  "name": "Doe, Jane",
+  "mobile": "+47 99998888",
+  "contact": "jane.doe@acme.com",
+  "me": "https://no.wikipedia.org/wiki/Jane_Doe",
+  "picture": "https://github.com/dnvgl/tech-radar/raw/master/assets/jane-doe.png",
+  "technologies": [
+    "jQuery",
+    "javascript",
+    "python"
+  ]
+}]

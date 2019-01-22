@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Technology Radar (demo)</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" />
+
+    <style>
+        body {
+            font-family: AvenirRegular, verdana, sans-serif;
+        }        
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/main.css" />
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" integrity="sha256-h0cGsrExGgcZtSZ/fRz4AwV+Nn6Urh/3v3jFRQ0w9dQ="
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+    <script src="./sharepoint.js"></script>
+    <script src="./utils.js"></script>
+    <script src="./main.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Technology Radar (demo)</a>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main">
+
+        <div class="container">
+            <div id="warning" style="display:none" class="alert alert-danger" role="alert">
+                Sorry, we are not yet supporting IE. Please use some other browser.
+            </div>
+
+            <div id="info" class="alert alert-info" role="alert">
+                <strong>Please hold on</strong>
+                <p>Loading...</p>
+            </div>
+        </div>
+        <div class="container" id="introduction">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>This demo contains a dummy data set, just to be able to demonstrate the
+                        basic functionality of the tech radar.
+                    </p>
+                    <p>
+                        Use the buttons below to filter the data, try the full-text search and use
+                        the navigation at the bottom to display different views on the results.
+                        If you click on a technology, more details will be shown,
+                        as well as links to projects using the technology and people who knows more about it.
+                    </p>
+                    <p>It should be easy to change this radar to show different kinds of technology domains. All the
+                        tags can be modified.
+                        The data sets can be provided on a static file server as json, or they can be served from a
+                        REST API.
+                    </p>
+                    <p>This app is built with in vanilla JS with jQuery and D3. One of the requirements was that it
+                        should
+                        be easy to style and integrate on intranet pages (e.g. Sharepoint).
+                    </p>
+                    <button class="btn btn-xs btn-info" onclick="javascript:$('#introduction').hide()">Hide</button>
+                    <hr />
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- THIS GOES INTO PAGE CONTENT -->
+                    <div class="technology-filters">
+                        <!-- <h3>Filter options</h3> -->
+
+                        <div class="form-group">
+                            <label for="category_filters">Domains / Categories</label>
+                            <div id="category_filters" class="filter"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="area_filters">Topic areas</label>
+                            <div id="area_filters" class="filter"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phase_filters">Technology phases</label>
+                            <div id="phase_filters" class="filter"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="status_filters">Evaluation status</label>
+                            <div id="status_filters" class="filter"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="technology_search">Full-text search</label>
+                            <input type="text" id="technology_search" class="form-control" autofocus placeholder="Full-text search"></input>
+                        </div>
+                    </div>
+                    <!-- END -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <!-- THIS GOES INTO THE LEFT GRID -->
+                    <div id="technology_results" role="navigation">
+                        <div>
+                            <ul class="nav nav-tabs">
+                                <li>
+                                    <a class="nav-link active" href="#list-by-phase-tab" title="List the results grouped by phase"><i
+                                            class="fas fa-list-ul"></i></a>
+                                </li>
+                                <li> <a class="nav-link" href="#list-by-area-tab" title="List the results grouped by area"><i
+                                            class="fas fa-list"></i></a>
+                                </li>
+                                <li> <a class="nav-link" href="#radar-tab" title="Show the results in a radar view"><i
+                                            class="fas fa-crosshairs"></i></a>
+                                </li>
+                                <li> <a class="nav-link" href="#bubblechart-tab" title="Show the results in a bubble chart view"><i
+                                            class="fas fa-compass"></i></a>
+                                </li>
+                                <li class="info">
+                                    <span id="numberOfResults" title="Number of matching technologies"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div id="list-by-phase-tab" class="tab">
+                            <div id="technology-list-by-phase">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="phase adopt" group-key="adopt">
+                                            <h3>Adopt <i class="fas fa-info-circle" title="Technologies that are supported."></i></h3>
+                                            <ul></ul>
+                                        </div>
+                                        <div class="phase trial" group-key="trial">
+                                            <h3>Trial <i class="fas fa-info-circle" title="Technologies that can be tried out on your own risk."></i></h3>
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="phase assess" group-key="assess">
+                                            <h3>Assess <i class="fas fa-info-circle" title="Technologies that are in the evaluation phase."></i></h3>
+                                            <ul></ul>
+                                        </div>
+                                        <div class="phase hold" group-key="hold">
+                                            <h3>Hold <i class="fas fa-info-circle" title="Technologies that are not supported. We don't recommend to use these."></i></h3>
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="list-by-area-tab" class="tab">
+                            <div id="technology-list-by-area">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="area languages_and_frameworks" group-key="languages & frameworks">
+                                            <h3>
+                                                Languages & frameworks
+                                                <i class="fas fa-info-circle" title="Programming languages and frameworks"></i>
+                                            </h3>
+                                            <ul></ul>
+                                        </div>
+                                        <div class="area platforms" group-key="platforms">
+                                            <h3>
+                                                Platforms
+                                                <i class="fas fa-info-circle" title="Platforms"></i>
+                                            </h3>
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="area techniques" group-key="techniques">
+                                            <h3>
+                                                Techniques
+                                                <i class="fas fa-info-circle" title="Techniques"></i>
+                                            </h3>
+                                            <ul></ul>
+                                        </div>
+                                        <div class="area tools" area-value="tools">
+                                            <h3>
+                                                Tools
+                                                <i class="fas fa-info-circle" title="Tools"></i>
+                                            </h3>
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="radar-tab" class="tab">
+                            <div class="svg-container">
+                                <svg id="radar" viewBox="0 0 600 600" preserveAspectRatio="xMinYMin meet" class="svg-content">
+                                    <style>
+                                        /* Inline this import */
+                                @import url(../css/radar.css);
+                            </style>
+                                    <defs>
+                                        <pattern id="holdStripes" patternUnits="userSpaceOnUse" width="20" height="20"
+                                            patternTransform="rotate(45)">
+                                            <rect width="20" height="20" fill="#F9F9F9" />
+                                            <line x1="10" y="0" x2="10" y2="20" stroke="#F2F2F2" stroke-width="10" />
+                                        </pattern>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <input type="checkbox" checked onchange="$('#radar-tab').toggleClass('no-blip-labels')"
+                                title="Show labels" />
+                        </div>
+
+                        <div id="bubblechart-tab" class="tab">
+                            <div class="svg-container">
+                                <svg id="bubblechart" viewBox="0 0 600 600" preserveAspectRatio="xMinYMin meet" class="svg-content">
+                                    <style>
+                                        /* Inline this import */
+                                        @import url(../css/bubblechart.css);
+                                    </style>
+                                </svg>
+                            </div>
+                            <p>
+                                The areas of the circles are proportional to the number of
+                                people that have included the technology in their "Ask me
+                                about" field of their profile.
+                            </p>
+                        </div>
+
+                    </div>
+                    <!-- END -->
+                </div>
+
+                <div class="col-sm-6">
+                    <!-- THIS GOES INTO THE RIGHT GRID -->
+                    <div id="technology_details">
+                        <div class="title"><span id="title"></span></div>
+
+                        <p id="description"></p>
+
+                        <h3>Projects</h3>
+                        <p>
+                            Projects using this technology:
+                        </p>
+                        <p>
+                            <div id="projectList"></div>
+                        </p>
+                        <p><a href="#TODO">Add your project to this list</a></p>
+
+                        <h3>People</h3>
+                        <p>
+                            If you have some questions, please contact one of your colleagues:
+                        </p>
+                        <div id="peopleList"></div>
+                        <p>
+                            People who have added &quot;Ask me about&quot; tags on their
+                            profile are listed here.
+                        </p>
+                        <p>
+                            <a href="#TODO" target="_blank">Update your profile</a>
+                        </p>
+                    </div>
+                    <!-- END -->
+                    <br />
+                </div>
+            </div>
+        </div>
+
+        <!-- Run the script -->
+        <script>
+            technologyRadar({
+                technologiesUrl: "../../data/technologies.json",
+                projectsUrl: "../../data/projects.json",
+                peopleUrl: "../../data/people.json",
+                avatarImageUrl: "../../assets/avatar.png",
+
+                ringSelector: t => t.phase,
+                sectorSelector: t => t.area,
+                countPeople: true,
+
+                containerId: ".tech-radar",
+                infoTextId: "#info p",
+                infoContainerId: "#info",
+                warningContainerId: "#warning",
+
+                searchInputId: "#technology_search",
+                categoryFiltersId: "#category_filters",
+                areaFiltersId: "#area_filters",
+                phaseFiltersId: "#phase_filters",
+                statusFiltersId: "#status_filters",
+                inactiveFilterButtons: ["Data Science", "received"],
+
+                results: {
+                    tabsQuery: "#technology_results .nav-link",
+                    listByPhaseId: "#technology-list-by-phase",
+                    listByAreaId: "#technology-list-by-area",
+                    numberOfResultsId: "#numberOfResults",
+                },
+
+                details: {
+                    id: "#technology_details",
+                    titleId: "#technology_details * #title",
+                    technologyDescriptionId: "#technology_details * #description",
+                    peopleListId: "#technology_details #peopleList",
+                    projectListId: "#technology_details #projectList",
+                },
+
+                radar: {
+                    id: "#radar",
+                    width: 600,
+                    height: 600,
+                    blipRadius: 10,
+                    rings: ["Adopt", "Trial", "Assess", "Hold"],
+                    sectors: ["Tools", "Languages & Frameworks", "Platforms", "Techniques"]
+                },
+                bubblechart: {
+                    id: "#bubblechart",
+                    width: 600,
+                    height: 600,
+                    minimumSize: 0.2
+                }
+            });
+        </script>
+        <!-- END -->
+    </main>
+
+    <footer>
+    </footer>
+</body>
+
+</html>

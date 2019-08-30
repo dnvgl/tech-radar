@@ -4,15 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel -o dist/script.min.js --presets es2015-ie --minified --no-comments src/utils.js src/sharepoint.js src/main.js",
+    "build": "babel -o dist/script.min.js --minified --no-comments src/utils.js src/sharepoint.js src/main.js",
     "start": "live-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "DNV GL",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015-ie": "^6.7.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "live-server": "^1.2.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4"
   }
 }

@@ -1,4 +1,8 @@
 {
   "private": true,
-  "workspaces": ["d3-tech-radar", "d3-tech-bubblechart", "radar1"]
+  "workspaces": [
+    "d3-tech-radar",
+    "d3-tech-bubblechart",
+    "radar1"
+  ]
 }
